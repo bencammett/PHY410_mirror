@@ -1,0 +1,38 @@
+Problem 2:
+
+2^10 = 1024, which is the largest number listed, so all answers will
+be given with 12 bits, since a 0th power place is needed (11 bits) and
+a bit place reserved for the negation as well (12 bits total).
+
+a.) 10 is positive, so first bit is 0, 2^3 = 8, and 2^1 = 2, so 1 will be
+in 3rd power placement and 1st power placement (8+2=10), as follows:
+10 --> 000000001010
+
+b.) 436 is positive, 0 at beginning, 2^8 = 256, 2^7 = 128, 2^5 = 32, 2^4 = 16, 2^2 = 4
+we see that 256 + 128 + 32 + 16 + 4 = 436, so there will be 1's in those respective 
+power placements.
+436 --> 000110110100
+
+c.) 1024 is positive so begin with a 0, 2^10 = 1024, so there will be a 1 in the 10th
+power placement.
+1024 --> 010000000000 
+
+d.) -13 is negative, so a 1 will end up in the first placement, but will hold on
+before applying this result. Take 13 as positive, apply 0 to first bit, note
+2^3 = 8, 2^2 = 4, 2^0 = 1, we see 8 + 4 + 1 = 13. So 1's go in those respective
+power placements. 13 --> 000000001101, but now flip all bits: 111111110010 and
+add 1: 111111110011.
+-13 --> 111111110011
+
+e.) As above, take 1023 instead, we note 512+256+128+64+32+16+8+4+2+1 = 1023,
+where 2^0 = 1, 2^1 = 2, 2^2 = 4, 2^3 = 8, 2^4 = 16, 2^5 = 32, 2^6 = 64,
+2^7 = 128, 2^8 = 256, and 2^9 = 512, so 1's in those power placements.
+1023 --> 001111111111, flip and add 1, so:
+-1023 --> 110000000001
+
+f.) Take 1024 as positive, 2^10 = 1024, a 1 in the 10th power placement we see the
+result from part c.) 1024 --> 010000000000, invert and add 1. Carry 1 out to left,
+as each preceding bit flips to 0 from this addition.
+-1024 --> 110000000000
+
+-Ben Cammett
