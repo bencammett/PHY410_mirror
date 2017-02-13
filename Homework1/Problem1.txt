@@ -1,0 +1,3 @@
+blcammet@agamemnon(117-10:21am)$ git branch -v
+* HW1    b0e4861 Adding HW1
+  master fee04d9 Fixing question of running ARK4 or RK4
