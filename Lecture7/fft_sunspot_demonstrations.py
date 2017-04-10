@@ -49,7 +49,7 @@ y = array( yinput )
 x = array([ float(i) for i in xrange(len(y)) ] )
 Y = fft(y)
 
-maxfreq = 50
+maxfreq = 100     # keeps first 100?
 # Now smooth the data
 for iY in range(maxfreq, len(Y)-maxfreq ) :
     Y[iY] = complex(0,0)

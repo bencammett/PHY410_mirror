@@ -1,3 +1,4 @@
+import math
 import matplotlib.pyplot as plt
 
 from fft import fft
@@ -6,7 +7,29 @@ from numpy import array
 import math
 import time
 
-plotfirst = True
+
+def least_squares_fit(x, y):
+
+    n = len(x)
+    s_x  = sum(x)
+    s_y  = sum(y)
+    s_xx = sum(x_i**2 for x_i in x)
+    s_xy = sum(x[i]*y[i] for i in range(n))
+    denom = n * s_xx - s_x**2
+    if abs(denom) > 0.00001 : 
+        a = (s_xx * s_y - s_x * s_xy) / denom
+        b = (n * s_xy - s_x * s_y) / denom
+        variance = sum((y[i] - (a + b*x[i]))**2 for i in range(n))
+        sigma = math.sqrt(variance/(n-2))
+        sigma_a = math.sqrt(sigma**2 * s_xx / denom)
+        sigma_b = math.sqrt(sigma**2 * n / denom)
+        return [a, b, sigma, sigma_a, sigma_b]
+    else :
+        print 'error : divided by zero!'
+        return None
+
+
+plotfirst = False
 
 if plotfirst == True : 
     # make some fake data as a single-frequency sinusoid
@@ -55,7 +78,7 @@ if plotfirst == True :
 else : 
     # data downloaded from ftp://ftp.cmdl.noaa.gov/ccg/co2/trends/co2_mm_mlo.txt
     print ' C02 Data from Mauna Loa'
-    data_file_name = 'co2_mm_mlo.txt'
+    data_file_name = 'co2_mm_mlo_2017.txt'
     file = open(data_file_name, 'r')
     lines = file.readlines()
     file.close()
@@ -71,7 +94,7 @@ else :
             try:
                 words = line.split()
                 xval = float(words[2])
-                yval = float( words[4] )
+                yval = float( words[5] )
                 yinput.append( yval )
                 xinput.append( xval )
             except ValueError :
@@ -110,6 +133,12 @@ else :
     p2, = plt.plot( x, Yre )
     ax.legend( [p1, p2], ["Power", "Magnitude"] )
     plt.yscale('log')
+
+    fit = least_squares_fit( x , y )
+    print ' least_squares fit to data:'
+    print ' slope m = {0:6.3f} +- {1:6.3f}'.format( fit[1], fit[4])
+    print ' intercept b = {0:6.3f} +- {1:6.3f}'.format( fit[0], fit[3])
+    print ' error bar = {0:6.3f}'.format( fit[2] )
 
 
     plt.show()
