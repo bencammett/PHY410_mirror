@@ -106,7 +106,7 @@ plt.ylabel( 'log(N)' )
 
 # Next also plot matplotlib's version of the same thing.
 plt.subplot( 2, 1, 2)
-plt.hist( magvalues, bins=90, range=[1.0,10.0], log=True, bottom=0.1,cumulative=-1)
+plt.hist( magvalues, bins=90, range=[1.0,10.0], log=False, bottom=0.1,cumulative=-1)
 plt.xlabel( 'Magnitude (M)' )
 plt.ylabel( 'N' )
 
