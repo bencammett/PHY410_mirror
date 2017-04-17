@@ -4,7 +4,7 @@ from fft import fft
 from numpy import array
 import math
 
-plotfirst = True
+plotfirst = False
 
 if plotfirst == True : 
     # make some fake data :
@@ -39,8 +39,8 @@ else :
     file.close()
     print ' read', len(lines), 'lines from', data_file_name
 
-    yinput = []
-    xinput = []
+    yinput = [] #co2
+    xinput = [] #year
 
     for line in lines :
         if line[0] != '#' :
