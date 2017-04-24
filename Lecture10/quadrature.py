@@ -15,5 +15,5 @@ b = 2 * atan(1.0)
 ans1 = trapezoid(sin, a, b, n1)
 print 'Trapezoidal rule = ' + str(ans1)
 
-ans2 = adaptive_trapezoid(sin, a, b, 0.0001)
+ans2 = adaptive_trapezoid(sin, a, b, 0.0001, True) # can add ,True to show steps, can change 0.0001
 print 'Adaptive trapezoidal rule = ' + str(ans2)
