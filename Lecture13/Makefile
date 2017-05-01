@@ -6,7 +6,7 @@ CC=g++
 LIBS=-I$(CPT_PATH) -L$(CPT_PATH) -lcpt
 
 
-all: scattering wheatstone
+all: scattering wheatstone Problem1
 
 scattering: scattering.cpp
 	$(CC) $^  $(LIBS) -o scattering
@@ -14,6 +14,8 @@ scattering: scattering.cpp
 wheatstone: wheatstone.cpp
 	$(CC) $^  $(LIBS) -o wheatstone
 
+Problem1: Problem1.cpp
+	$(CC) $^  $(LIBS) -o Problem1
 
 clean:
-	rm -rf *o scattering wheatstone
+	rm -rf *o scattering wheatstone Problem1
