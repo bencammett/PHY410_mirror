@@ -6,7 +6,7 @@ CC=g++
 LIBS=-I$(CPT_PATH) -L$(CPT_PATH) -lcpt
 
 
-all: triatomic matrixmult
+all: triatomic matrixmult Problem2
 
 triatomic: triatomic.cpp
 	$(CC) $^  $(LIBS) -o triatomic
@@ -14,6 +14,8 @@ triatomic: triatomic.cpp
 matrixmult: matrixmult.cpp
 	$(CC) $^  $(LIBS) -o matrixmult
 
+Problem2: Problem2.cpp
+	$(CC) $^  $(LIBS) -o Problem2
 
 clean:
-	rm -rf *o triatomic matrixmult
+	rm -rf *o triatomic matrixmult Problem2
