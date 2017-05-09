@@ -6,7 +6,7 @@ CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=-I$(CPT_PATH) -L$(CPT_PATH) -lcpt
 
-all: higgs minimize
+all: higgs minimize Problem1
 
 $(SRC): $(SRC).o
 	$(CC) $(LDFLAGS) $(SRC).o -o $(SRC)
@@ -15,4 +15,4 @@ $(SRC).o: $(SRC).cpp
 	$(CC) $(CFLAGS)  $(LDFLAGS) $(SRC).cpp
 
 clean:
-	rm -rf *o higgs minimize
+	rm -rf *o higgs minimize Problem1
